@@ -16,6 +16,7 @@ import jakarta.persistence.*;
 @Table(name = "members")
 public class Member {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonBackReference
     Set<Expense> expenses;
 
     @Id
