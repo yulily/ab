@@ -13,7 +13,7 @@ import java.util.List;
 import java.time.LocalDate;
 import java.time.YearMonth;
 
-@Controller
+@RestController
 public class TopController {
     @Autowired
     private UserRepository userRepository;
@@ -22,7 +22,7 @@ public class TopController {
     private ExpenseRepository expenseRepository;
 
     @GetMapping(path="/")
-    public @ResponseBody HashMap<String, Object> getMemberWithExpenses(
+    public HashMap<String, Object> getMemberWithExpenses(
             @RequestParam(value = "currentDate", required = false) String currentDateParam
     ) {
         // TODO: バリデーション
@@ -58,6 +58,7 @@ public class TopController {
         response.put("totalExpenses", totalExpenses);
         response.put("groupByMembers", groupByMember);
         response.put("groupByCategories", groupByCategory);
+
         return response;
     }
 }
